@@ -1,0 +1,20 @@
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ask anything about using Rolebranch. The [Help centre](https://rolebranch.com/help) and the [Help guides](https://github.com/Rolebranch/community/discussions/categories/help-guides) may already have the answer.
+
+        When a reply solves it, choose **Mark as answer** so the next person finds it. This post is public, so leave out your CV text and personal details.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What you want to do, and where you got stuck.
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What have you tried?
+      description: Optional. The screen you were on and what you clicked.

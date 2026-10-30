@@ -1,0 +1,56 @@
+title: "[Idea] "
+labels: ["idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping shape Rolebranch. Please [search the Ideas](https://github.com/Rolebranch/community/discussions/categories/ideas) first: if someone already asked, upvote theirs and add your reason in a comment.
+
+        Discussions are public, so leave out your CV text and personal details.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Where would it live?
+      options:
+        - Master CV and the editor
+        - Templates and the PDF
+        - Tailoring with Romy
+        - Cover letters
+        - Applications board and reminders
+        - Interview prep and practice
+        - Credits and pricing
+        - Connectors (ChatGPT, Claude, Le Chat, other AI apps)
+        - Languages and translation
+        - Phone and the installed app
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The job you want done and what gets in the way today. A real example helps most.
+      placeholder: "When I apply to roles in two countries, I have to..."
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would help?
+      description: How you picture it working. Rough is fine.
+    validations:
+      required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What do you do instead today?
+      description: Another tool, a spreadsheet, doing it by hand, or skipping it.
+  - type: dropdown
+    id: importance
+    attributes:
+      label: How much would it matter to you?
+      options:
+        - Nice to have
+        - I'd use it every week
+        - It's why I can't use Rolebranch for my search yet
