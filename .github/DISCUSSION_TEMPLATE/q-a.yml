@@ -3,18 +3,82 @@ body:
   - type: markdown
     attributes:
       value: |
-        Ask anything about using Rolebranch. The [Help centre](https://rolebranch.com/help) and the [Help guides](https://github.com/Rolebranch/community/discussions/categories/help-guides) may already have the answer.
+        Ask how to do something, or tell us about something that doesn't work. A few checks first:
 
-        When a reply solves it, choose **Mark as answer** so the next person finds it. This post is public, so leave out your CV text and personal details.
-  - type: textarea
-    id: question
+        - Is Rolebranch down right now? See [rolebranch.com/status](https://rolebranch.com/status).
+        - Is there a guide for it? Try the [Help centre](https://rolebranch.com/help) and the guides in [Announcements](https://github.com/Rolebranch/community/discussions/categories/announcements).
+        - Has someone asked already? [Search Q&A](https://github.com/Rolebranch/community/discussions/categories/q-a) and upvote theirs.
+
+        **This post is public.** Don't paste your CV, your email or anything from your account. If we need a file or your account to look into it, we'll ask you to send it privately through [rolebranch.com/help/request](https://rolebranch.com/help/request). Security issues go to [rolebranch.com/security](https://rolebranch.com/security), not here.
+
+        When a reply solves it, choose **Mark as answer** so the next person finds it.
+  - type: dropdown
+    id: kind
     attributes:
-      label: Your question
-      description: What you want to do, and where you got stuck.
+      label: Is this a question or a problem?
+      options:
+        - A question about how to do something
+        - A problem (something doesn't work as it should)
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where in Rolebranch?
+      options:
+        - Signing in
+        - Importing a CV
+        - Master CV and the editor
+        - Templates and the PDF download
+        - Tailoring with Romy
+        - Cover letters
+        - Reading a job posting from a link
+        - Applications board and reminders
+        - Interview prep and practice
+        - Credits or a coupon
+        - Connectors (ChatGPT, Claude, Le Chat, other AI apps)
+        - Emails from Rolebranch
+        - Account, settings or export
+        - The website (rolebranch.com)
+        - Something else
     validations:
       required: true
   - type: textarea
-    id: tried
+    id: details
     attributes:
-      label: What have you tried?
-      description: Optional. The screen you were on and what you clicked.
+      label: What's going on?
+      description: |
+        A question: what you want to do and where you got stuck.
+        A problem: what you saw (the exact message, if there was one) and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to see it (problems)
+      description: What you did, one step per line.
+      placeholder: |
+        1. Open an application
+        2. Choose Tailor CV
+        3. ...
+  - type: input
+    id: device
+    attributes:
+      label: Device and browser (problems)
+      placeholder: "e.g. MacBook, Chrome 141 / iPhone, the installed app / Windows, Edge"
+  - type: input
+    id: when
+    attributes:
+      label: When did it happen? (problems)
+      description: Date and roughly what time, with your time zone, so we can find it in our logs.
+      placeholder: "e.g. 30 Oct, around 14:20 CET"
+  - type: input
+    id: version
+    attributes:
+      label: Rolebranch version (if you know it)
+      description: Shown at the foot of Settings › Account.
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Crop or blur your name, contact details and CV text first.

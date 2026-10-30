@@ -1,0 +1,108 @@
+# One-off: posts the starter discussions in .github/seed-discussions/ and creates the labels the
+# posts and forms use. Run it by hand from the Actions tab. It skips a post whose title is already
+# a discussion, so running it twice posts nothing twice.
+name: Seed discussions
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  discussions: write
+  issues: write
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Create labels
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const labels = [
+              ['idea', 'a2eeef', 'A request for something new'],
+              ['question', 'd876e3', 'A question or a problem report'],
+              ['under review', 'fbca04', 'Read, and thinking about it'],
+              ['planned', '0e8a16', 'On the list'],
+              ['shipped', '5319e7', 'Out now'],
+              ['not planned', 'cfd3d7', 'Closed, with the reason why'],
+              ['confirmed', 'd93f0b', 'We can see the problem too'],
+              ['fixed', '0e8a16', 'Fixed in a released version'],
+              ['need more info', 'fef2c0', 'We need a detail to look into it'],
+            ];
+
+            for (const [name, color, description] of labels) {
+              try {
+                await github.rest.issues.createLabel({ ...context.repo, name, color, description });
+                core.info(`Created label ${name}`);
+              } catch (error) {
+                if (error.status !== 422) throw error;
+                core.info(`Label ${name} already exists`);
+              }
+            }
+
+      - name: Post discussions
+        uses: actions/github-script@v7.0.1
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const dir = '.github/seed-discussions';
+            const { owner, repo } = context.repo;
+
+            const { repository } = await github.graphql(
+              `query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  id
+                  discussionCategories(first: 25) { nodes { id name } }
+                  discussions(first: 100) { nodes { title url } }
+                }
+              }`,
+              { owner, repo },
+            );
+
+            const categories = new Map(repository.discussionCategories.nodes.map((c) => [c.name, c.id]));
+            const existing = new Map(repository.discussions.nodes.map((d) => [d.title, d.url]));
+            const rows = [];
+
+            for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
+              const text = fs.readFileSync(path.join(dir, file), 'utf8');
+              const header = text.match(/^<!--([\s\S]*?)-->/);
+              if (!header) throw new Error(`${file} has no <!-- Category / Title --> header`);
+
+              const category = header[1].match(/^Category:\s*(.+)$/m)?.[1].trim();
+              const title = header[1].match(/^Title:\s*(.+)$/m)?.[1].trim();
+              const body = text.slice(header[0].length).trim();
+
+              if (existing.has(title)) {
+                rows.push([title, 'already posted', existing.get(title)]);
+                continue;
+              }
+
+              const categoryId = categories.get(category);
+              if (!categoryId)
+                throw new Error(`${file}: no category "${category}" (have: ${[...categories.keys()].join(', ')})`);
+
+              const { createDiscussion } = await github.graphql(
+                `mutation($repositoryId: ID!, $categoryId: ID!, $title: String!, $body: String!) {
+                  createDiscussion(input: { repositoryId: $repositoryId, categoryId: $categoryId, title: $title, body: $body }) {
+                    discussion { url }
+                  }
+                }`,
+                { repositoryId: repository.id, categoryId, title, body },
+              );
+
+              rows.push([title, category, createDiscussion.discussion.url]);
+              core.info(`Posted ${title}: ${createDiscussion.discussion.url}`);
+            }
+
+            await core.summary
+              .addHeading('Starter discussions')
+              .addTable([
+                [{ data: 'Title', header: true }, { data: 'Category', header: true }, { data: 'Link', header: true }],
+                ...rows,
+              ])
+              .write();
