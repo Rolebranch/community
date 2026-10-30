@@ -32,4 +32,4 @@ Each idea gets a label as it moves:
 - `shipped`: out now, with a link to [What's new](https://rolebranch.com/whats-new)
 - `not planned`: closed, with the reason why
 
-The ideas we're asked for most get posted as a 🗳️ [poll](https://github.com/Rolebranch/community/discussions/categories/polls), so you can help pick the order.
+The ideas we're asked for most get posted as a 🗳️ [poll](https://github.com/orgs/Rolebranch/discussions/categories/polls), so you can help pick the order.

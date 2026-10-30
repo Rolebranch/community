@@ -36,7 +36,7 @@ Paste the text instead: copy it from wherever your CV lives and import it as tex
 
 ## Still not working?
 
-Open a post in [🙏 Q&A](https://github.com/Rolebranch/community/discussions/new?category=q-a)
+Open a post in [🙏 Q&A](https://github.com/orgs/Rolebranch/discussions/new?category=q-a)
 with the file type and the exact message you saw, **but don't attach your CV here**: this is public.
 If we need the file, we'll ask you to send it privately through
 [rolebranch.com/help/request](https://rolebranch.com/help/request).

@@ -1,6 +1,6 @@
 # One-off: posts the starter discussions in .github/seed-discussions/ and creates the labels the
-# posts and forms use. Run it by hand from the Actions tab. It skips a post whose title is already
-# a discussion, so running it twice posts nothing twice.
+# posts and forms use. Run it by hand from the Actions tab. A post whose title is already a
+# discussion is updated to the file's text instead, so running it twice posts nothing twice.
 name: Seed discussions
 
 on:
@@ -58,14 +58,14 @@ jobs:
                 repository(owner: $owner, name: $repo) {
                   id
                   discussionCategories(first: 25) { nodes { id name } }
-                  discussions(first: 100) { nodes { title url } }
+                  discussions(first: 100) { nodes { id title url body } }
                 }
               }`,
               { owner, repo },
             );
 
             const categories = new Map(repository.discussionCategories.nodes.map((c) => [c.name, c.id]));
-            const existing = new Map(repository.discussions.nodes.map((d) => [d.title, d.url]));
+            const existing = new Map(repository.discussions.nodes.map((d) => [d.title, d]));
             const rows = [];
 
             for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.md')).sort()) {
@@ -77,8 +77,22 @@ jobs:
               const title = header[1].match(/^Title:\s*(.+)$/m)?.[1].trim();
               const body = text.slice(header[0].length).trim();
 
-              if (existing.has(title)) {
-                rows.push([title, 'already posted', existing.get(title)]);
+              const posted = existing.get(title);
+
+              if (posted) {
+                if (posted.body.trim() === body) {
+                  rows.push([title, 'unchanged', posted.url]);
+                  continue;
+                }
+
+                await github.graphql(
+                  `mutation($discussionId: ID!, $body: String!) {
+                    updateDiscussion(input: { discussionId: $discussionId, body: $body }) { discussion { url } }
+                  }`,
+                  { discussionId: posted.id, body },
+                );
+                rows.push([title, 'updated', posted.url]);
+                core.info(`Updated ${title}: ${posted.url}`);
                 continue;
               }
 

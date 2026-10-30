@@ -4,7 +4,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping shape Rolebranch. Please [search the Ideas](https://github.com/Rolebranch/community/discussions/categories/ideas) first: if someone already asked, upvote theirs and add your reason in a comment.
+        Thanks for helping shape Rolebranch. Please [search the Ideas](https://github.com/orgs/Rolebranch/discussions/categories/ideas) first: if someone already asked, upvote theirs and add your reason in a comment.
 
         Discussions are public, so leave out your CV text and personal details.
   - type: dropdown

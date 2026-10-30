@@ -17,7 +17,7 @@ Many problems have a guide:
 
 | What you see | Try |
 | --- | --- |
-| Import failed / wrong roles | [Import troubleshooting](https://github.com/Rolebranch/community/discussions/categories/announcements) |
+| Import failed / wrong roles | [Import troubleshooting](https://github.com/orgs/Rolebranch/discussions/3) |
 | Sign-in link expired | [Send a new link](https://rolebranch.com/help/getting-started/sign-in-link-expired) and open it within 15 minutes, on the same device |
 | The PDF looks different from the preview | [Save first, then download again](https://rolebranch.com/help/master-cv/pdf-looks-different) |
 | A run failed and took credits | [They come back by themselves](https://rolebranch.com/help/credits/refunds-when-a-run-fails) |
@@ -25,12 +25,12 @@ Many problems have a guide:
 
 ## 3. Has someone reported it?
 
-[Search Q&A](https://github.com/Rolebranch/community/discussions/categories/q-a). If yours is there, **upvote** it and comment with your device and browser.
+[Search Q&A](https://github.com/orgs/Rolebranch/discussions/categories/q-a). If yours is there, **upvote** it and comment with your device and browser.
 That helps more than a new post.
 
 ## 4. Report it
 
-Choose **[New discussion › Q&A](https://github.com/Rolebranch/community/discussions/new?category=q-a)**
+Choose **[New discussion › Q&A](https://github.com/orgs/Rolebranch/discussions/new?category=q-a)**
 and pick "A problem" in the form. It asks for what happened, what you expected, the steps, your
 device and browser, and roughly when. The time matters: it lets us find it in our logs.
 

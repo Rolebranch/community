@@ -46,4 +46,4 @@ Change its limit, see what it did, or **Disconnect** it any time from **Connecto
 [Full guide →](https://rolebranch.com/help/account/connect-chatgpt-claude-cursor)
 
 Which other AI apps should we support? Tell us in
-[💡 Ideas](https://github.com/Rolebranch/community/discussions/new?category=ideas).
+[💡 Ideas](https://github.com/orgs/Rolebranch/discussions/new?category=ideas).

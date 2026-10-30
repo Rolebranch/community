@@ -6,16 +6,16 @@
 # Rolebranch community
 
 The place to learn Rolebranch, ask how something works, ask for something new and tell us when
-something breaks. **[Open the Discussions →](https://github.com/Rolebranch/community/discussions)**
+something breaks. **[Open the Discussions →](https://github.com/orgs/Rolebranch/discussions)**
 
 | Category | Use it to | |
 | --- | --- | --- |
-| 📣 **Announcements** | Read step-by-step guides and news from the team, and comment with questions | [Read](https://github.com/Rolebranch/community/discussions/categories/announcements) |
-| 🙏 **Q&A** | Ask how to do something, or report something that doesn't work. The reply that solves it is marked as the answer | [Ask or report](https://github.com/Rolebranch/community/discussions/new?category=q-a) |
-| 💡 **Ideas** | Ask for a feature, a template, a connector or a Romy ability. Upvote the ones you want | [Suggest](https://github.com/Rolebranch/community/discussions/new?category=ideas) |
-| 🗳️ **Polls** | Vote on what we build next | [Vote](https://github.com/Rolebranch/community/discussions/categories/polls) |
-| 🙌 **Show and tell** | Share a win: the interview you landed, a template you styled, a tip that worked | [Share](https://github.com/Rolebranch/community/discussions/new?category=show-and-tell) |
-| 💬 **General** | Talk about job searching and anything else | [Chat](https://github.com/Rolebranch/community/discussions/categories/general) |
+| 📣 **Announcements** | Read step-by-step guides and news from the team, and comment with questions | [Read](https://github.com/orgs/Rolebranch/discussions/categories/announcements) |
+| 🙏 **Q&A** | Ask how to do something, or report something that doesn't work. The reply that solves it is marked as the answer | [Ask or report](https://github.com/orgs/Rolebranch/discussions/new?category=q-a) |
+| 💡 **Ideas** | Ask for a feature, a template, a connector or a Romy ability. Upvote the ones you want | [Suggest](https://github.com/orgs/Rolebranch/discussions/new?category=ideas) |
+| 🗳️ **Polls** | Vote on what we build next | [Vote](https://github.com/orgs/Rolebranch/discussions/categories/polls) |
+| 🙌 **Show and tell** | Share a win: the interview you landed, a template you styled, a tip that worked | [Share](https://github.com/orgs/Rolebranch/discussions/new?category=show-and-tell) |
+| 💬 **General** | Talk about job searching and anything else | [Chat](https://github.com/orgs/Rolebranch/discussions/categories/general) |
 
 Before you post, search: someone may have asked already. An upvote (👍 on the post) tells us more
 than a "+1" comment.
